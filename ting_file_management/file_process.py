@@ -5,22 +5,23 @@ import sys
 def process(path_file, instance):
     file = txt_importer(path_file)
     for i in range(len(instance)):
-        if instance.search(i)["nome_do_arquivo"] == path_file:
+        if instance.search(i)['nome_do_arquivo'] == path_file:
             return None
 
     data = {
-        "nome_do_arquivo": path_file,
-        "qtd_linhas": len(file),
-        "linhas_do_arquivo": (file),
+        'nome_do_arquivo': path_file,
+        'qtd_linhas': len(file),
+        'linhas_do_arquivo': (file),
     }
 
     print(f'{data}', file=sys.stdout)
     instance.enqueue(data)
     return data
 
+
 def remove(instance):
     if instance.__len__() == 0:
-        print(f'Não há elementos', file=sys.stdout)
+        print('Não há elementos', file=sys.stdout)
     else:
         file_deleted = instance.dequeue()
         path_file = file_deleted['nome_do_arquivo']
@@ -30,7 +31,6 @@ def remove(instance):
 def file_metadata(instance, position):
     try:
         returnSearch = instance.search(position)
-        print(f'meu print', returnSearch, file=sys.stdout)
-    except:
-        print(f'Posição inválida', file=sys.stderr)
-    
+        print('meu print', returnSearch, file=sys.stdout)
+    except IndexError:
+        print('Posição inválida', file=sys.stderr)

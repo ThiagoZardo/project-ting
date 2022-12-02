@@ -17,6 +17,6 @@ class Queue:
     def search(self, index):
         if index < 0 or not isinstance(index, int) or index > self.__length:
             raise IndexError
-        
+
         lista = self.values
         return lista[index]
